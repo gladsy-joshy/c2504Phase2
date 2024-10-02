@@ -1,0 +1,22 @@
+﻿<Window x:Class="Example14BrushesProject.SolidColor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Example14BrushesProject"
+        mc:Ignorable="d"
+        Title="SolidColor" Height="450" Width="800" Closing="Window_Closing">
+    <Canvas>
+        <Rectangle Height="199" Canvas.Left="217" Stroke="Black" Canvas.Top="97" Width="343">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Aqua"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse Height="111" Canvas.Left="616" Stroke="Black" Canvas.Top="144" Width="108">
+            <Ellipse.Fill>
+                <SolidColorBrush Color="Orange"/>
+            </Ellipse.Fill>
+        </Ellipse>
+
+    </Canvas>
+</Window>
