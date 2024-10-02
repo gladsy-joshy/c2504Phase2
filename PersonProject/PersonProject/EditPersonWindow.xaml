@@ -1,0 +1,24 @@
+﻿<Window x:Class="PersonProject.EditPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonProject"
+        mc:Ignorable="d"
+        Title="Edit Person" Height="450" Width="800" Closing="Window_Closing">
+    <Canvas>
+        <TextBlock Canvas.Left="163" TextWrapping="Wrap" Text="FirstName" Canvas.Top="123" Background="#FF279EED" Height="26" Width="155" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Canvas.Left="400" TextWrapping="Wrap" Text="{Binding EditablePerson.FirstName}" Canvas.Top="123" Background="#FFC2E65E" Height="26" Width="155" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox Canvas.Left="400" TextWrapping="Wrap" Text="{Binding EditablePerson.LastName}" Canvas.Top="191" Background="#FFC2E65E" Height="26" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <TextBlock Canvas.Left="163" TextWrapping="Wrap" Text="LastName" Canvas.Top="191" Background="#FF279EED" Height="26" Width="155" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdate" Content="Update" Height="49" Canvas.Left="269" Canvas.Top="269" Width="161" Foreground="#FFEDDDE2" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding UpdateCommand}">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFCBF4E7" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Canvas>
+</Window>
