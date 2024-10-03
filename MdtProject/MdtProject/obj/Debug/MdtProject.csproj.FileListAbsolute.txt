@@ -1,0 +1,15 @@
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.csproj.AssemblyReference.cache
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\ReportWindow.g.cs
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\App.g.cs
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject_MarkupCompile.cache
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject_MarkupCompile.lref
+C:\Users\2021470\source\repos\MdtProject\MdtProject\bin\Debug\MdtProject.exe.config
+C:\Users\2021470\source\repos\MdtProject\MdtProject\bin\Debug\MdtProject.exe
+C:\Users\2021470\source\repos\MdtProject\MdtProject\bin\Debug\MdtProject.pdb
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\ReportWindow.baml
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.g.resources
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.Properties.Resources.resources
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.csproj.GenerateResource.cache
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.csproj.CoreCompileInputs.cache
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.exe
+C:\Users\2021470\source\repos\MdtProject\MdtProject\obj\Debug\MdtProject.pdb
