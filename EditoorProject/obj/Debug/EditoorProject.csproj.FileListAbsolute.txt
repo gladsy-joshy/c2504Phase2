@@ -1,0 +1,15 @@
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\bin\Debug\EditoorProject.exe.config
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\bin\Debug\EditoorProject.exe
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\bin\Debug\EditoorProject.pdb
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.csproj.AssemblyReference.cache
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\MainWindow.g.cs
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\App.g.cs
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject_MarkupCompile.cache
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject_MarkupCompile.lref
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\MainWindow.baml
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.g.resources
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.Properties.Resources.resources
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.csproj.GenerateResource.cache
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.csproj.CoreCompileInputs.cache
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.exe
+C:\Users\2021470\source\repos\ExammpleMenu\EditoorProject\obj\Debug\EditoorProject.pdb
