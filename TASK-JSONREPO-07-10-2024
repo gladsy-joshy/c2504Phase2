@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml;
 using BankManagementSystem.Exceptions;
 using BankManagementSystem.Models;
@@ -120,24 +121,26 @@ namespace BankManagementSystem.Databases
             }
         }
 
-        public void DeleteAccount(int acNo, Account account)
+        public void Delete(Account account)
+
         {
             try
             {
-                var existingAccount = accounts.FirstOrDefault(a => a.AccountNumber == acNo);
-                if (existingAccount != null)
+                var selectedAccount = accounts.FirstOrDefault(a => a.IsActive == true);
+                if (selectedAccount != null)
                 {
-                    accounts.Remove(existingAccount);
+                    selectedAccount.IsActive = false;
                     SaveAccountsToJson();
+                    MessageBox.Show("Account deleted successfully");
                 }
                 else
                 {
-                    throw new AccountException("Account doesn't exists");
+                    throw new AccountException("No account selected");
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Error deleting account: " + ex.Message);
             }
         }
 
@@ -343,6 +346,7 @@ namespace BankManagementSystem.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountViewModel"/> class.
         /// </summary>
+        public ICommand DeleteCommand { get; }
         public AccountViewModel()
         {
             this.NewAccount = new Account
@@ -363,7 +367,8 @@ namespace BankManagementSystem.ViewModels
             };
             CreateCommand = new RelayCommand(Create);
             UpdateCommand = new RelayCommand(Update);
-           
+            DeleteCommand = new RelayCommand(Delete);
+
         }
 
         /// <summary>
@@ -446,11 +451,52 @@ namespace BankManagementSystem.ViewModels
             }
         }
 
+        public void Delete()
+        {
+            if (this.SelectedAccount == null)
+            {
+                var result = MessageBox.Show(messageBoxText: "Please select an account",
+                    caption: "Alert",
+                    button: MessageBoxButton.OK,
+                    icon: MessageBoxImage.Information);
+                return;
+            }
 
-        
+            var res = MessageBox.Show(messageBoxText: "Are you sure to Delete?",
+                    caption: "Confirm",
+                    button: MessageBoxButton.YesNo,
+                    icon: MessageBoxImage.Question);
+
+            if (res != MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+
+                _repo.Delete(this.SelectedAccount);
+                this.SelectedAccount = this.SelectedAccount;
+                var result = MessageBox.Show(messageBoxText: $"Account {SelectedAccount.AccountNumber} is marked as deleted successfully",
+                        caption: "Alert",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Information);
+                Logger.log.Info($"Account {SelectedAccount.AccountNumber} is marked as deleted successfully");
+            }
+            catch (AccountException ae)
+            {
+                Logger.log.Error(ae.Message);
+            }
+        }
+
+
+
+
+
     }
 
 }
+
 
 
 *DepositViewModel.cs
