@@ -1686,6 +1686,43 @@ namespace BankManagementSystem.ViewModels
                 EditWindowClose();
             }
         }
+public void Delete()
+{
+    if (this.SelectedAccount == null)
+    {
+        var result = MessageBox.Show(messageBoxText: "Please select an account",
+            caption: "Alert",
+            button: MessageBoxButton.OK,
+            icon: MessageBoxImage.Information);
+        return;
+    }
+
+    var res = MessageBox.Show(messageBoxText: "Are you sure to Delete?",
+            caption: "Confirm",
+            button: MessageBoxButton.YesNo,
+            icon: MessageBoxImage.Question);
+
+    if (res != MessageBoxResult.Yes)
+    {
+        return;
+    }
+
+    try
+    {
+
+        _repo.Delete(this.SelectedAccount);
+        this.SelectedAccount = this.SelectedAccount;
+        var result = MessageBox.Show(messageBoxText: $"Account {SelectedAccount.AccountNumber} is marked as deleted successfully",
+                caption: "Alert",
+                button: MessageBoxButton.OK,
+                icon: MessageBoxImage.Information);
+        Logger.log.Info($"Account {SelectedAccount.AccountNumber} is marked as deleted successfully");
+    }
+    catch (AccountException ae)
+    {
+        Logger.log.Error(ae.Message);
+    }
+}
 
        
 
