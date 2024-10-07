@@ -508,8 +508,11 @@ namespace BankManagementSystem.Models
 Margin="10 10 0 0" HorizontalAlignment="Right"
 Background="#FF03079E" Foreground="#FF00FF19" FontWeight="bold"
 Click="btnView_Click"/>
-            
-        <Button  Content="Update Account" Width="200" Height="30"
+
+            <Button x:Name="btnDelete" Content="Mark As Delete" Width="200" Height="30"
+Margin="10 10 0 0" HorizontalAlignment="Right"
+Background="#FF03079E" Foreground="#FF00FF19" FontWeight="bold" Command="{Binding DeleteCommand}"/>
+            <Button  Content="Update Account" Width="200" Height="30"
         Margin="30 10 0 0" HorizontalAlignment="Right"
         Background="#FF03129E" Foreground="#FF00FF22" FontWeight="bold"
         Click="Button_Click_1"/>
@@ -518,6 +521,7 @@ Click="btnView_Click"/>
     </Grid>
 
 </Window>
+
 
 
 
@@ -1524,7 +1528,7 @@ namespace BankManagementSystem.ViewModels
         /// <summary>
         /// Gets the accounts repository.
         /// </summary>
-        private IAccountRepo _repo = AccountMemoryRepo.Instance;
+        private IAccountRepo _repo = AccountJsonRepo.Instance;
 
         // <summary>
         /// Gets the collection of accounts.
@@ -1559,6 +1563,7 @@ namespace BankManagementSystem.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountViewModel"/> class.
         /// </summary>
+        public ICommand DeleteCommand { get; }
         public AccountViewModel()
         {
             this.NewAccount = new Account
@@ -1579,6 +1584,7 @@ namespace BankManagementSystem.ViewModels
             };
             CreateCommand = new RelayCommand(Create);
             UpdateCommand = new RelayCommand(Update);
+            DeleteCommand = new RelayCommand(Delete);
            
         }
 
@@ -1662,11 +1668,49 @@ namespace BankManagementSystem.ViewModels
             }
         }
 
+        public void Delete()
+        {
+            if (this.SelectedAccount == null)
+            {
+                var result = MessageBox.Show(messageBoxText: "Please select an account",
+                    caption: "Alert",
+                    button: MessageBoxButton.OK,
+                    icon: MessageBoxImage.Information);
+                return;
+            }
 
-        
+            var res = MessageBox.Show(messageBoxText: "Are you sure to Delete?",
+                    caption: "Confirm",
+                    button: MessageBoxButton.YesNo,
+                    icon: MessageBoxImage.Question);
+
+            if (res != MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            try
+            {
+                AccountJsonRepo.Instance.DeleteAccount(this.SelectedAccount.AccountNumber, this.SelectedAccount);
+                this.SelectedAccount = null;
+                var result = MessageBox.Show(messageBoxText: $"Account {this.SelectedAccount.AccountNumber} is deleted successfully",
+                        caption: "Alert",
+                        button: MessageBoxButton.OK,
+                        icon: MessageBoxImage.Information);
+                Logger.log.Info($"Account {this.SelectedAccount.AccountNumber} is deleted successfully");
+            }
+            catch (AccountException ae)
+            {
+                Logger.log.Error(ae.Message);
+            }
+        }
+
+
+
     }
 
 }
+
 
 
 *DepositViewModel
