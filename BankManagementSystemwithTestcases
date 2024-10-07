@@ -222,6 +222,25 @@ namespace BankManagementSystem.Databases
             }
             
         }
+      public void Delete(Account account)
+        {
+            try
+            {
+                var existingAccount = accounts.FirstOrDefault(a => a.AccountNumber == account.AccountNumber);
+                if (existingAccount != null)
+                {
+                    existingAccount.IsActive = false;
+                }
+                else
+                {
+                    throw new AccountException("Account doesn't exists");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         /// <summary>
         /// Deletes an account from the repository.
@@ -1668,42 +1687,7 @@ namespace BankManagementSystem.ViewModels
             }
         }
 
-        public void Delete()
-        {
-            if (this.SelectedAccount == null)
-            {
-                var result = MessageBox.Show(messageBoxText: "Please select an account",
-                    caption: "Alert",
-                    button: MessageBoxButton.OK,
-                    icon: MessageBoxImage.Information);
-                return;
-            }
-
-            var res = MessageBox.Show(messageBoxText: "Are you sure to Delete?",
-                    caption: "Confirm",
-                    button: MessageBoxButton.YesNo,
-                    icon: MessageBoxImage.Question);
-
-            if (res != MessageBoxResult.Yes)
-            {
-                return;
-            }
-
-            try
-            {
-                AccountJsonRepo.Instance.DeleteAccount(this.SelectedAccount.AccountNumber, this.SelectedAccount);
-                this.SelectedAccount = null;
-                var result = MessageBox.Show(messageBoxText: $"Account {this.SelectedAccount.AccountNumber} is deleted successfully",
-                        caption: "Alert",
-                        button: MessageBoxButton.OK,
-                        icon: MessageBoxImage.Information);
-                Logger.log.Info($"Account {this.SelectedAccount.AccountNumber} is deleted successfully");
-            }
-            catch (AccountException ae)
-            {
-                Logger.log.Error(ae.Message);
-            }
-        }
+       
 
 
 
